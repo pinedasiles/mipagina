@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify hhh UI</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background-color: #121212;
+            color: green;
+        }
+        .sidebar {
+            background-color: #000;
+            height: 100vh;
+            padding: 20px;
+        }
+        .navbar {
+            background-color: #181818;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .search-bar {
+            background-color: #222;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .search-bar input {
+            width: 100%;
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            color: rgb(0, 0, 0);
+            background-color: #333;
+        }
+        .download-icon {
+            color: #94c6a6;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .download-icon:hover {
+            transform: scale(1.2);
+        }
+        .playlist-container {
+            margin-top: 20px;
+            background-color: #222;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .reproductor {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #181818;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .hidden {
+            display: none;
+        }
+        .album {
+            margin-top: 20px;
+        }
+        .album img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <!-- Barra superior -->
+        <div class="navbar">
+            <div>
+                <h4>Spotify</h4>
+                <a href="#" class="text-white mx-4">Inicio</a>
+                <a href="#" class="text-white mx-4">Buscar</a>
+                <a href="#" class="text-white mx-4">Premium</a>
+                <a href="#" class="text-white mx-4">Asistencia</a>
+                <a href="#" class="text-white mx-4">Descargar</a>
+                <a href="#" class="text-white mx-4">registrarte</a>
+                <button class="btn-success">Descargar app</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Barra lateral -->
+            <div class="col-md-2 sidebar">
+                <ul class="nav flex-column">
+                    <a href="#" class="text-white mx-5">TuBiblioteca</a>
+
+                    <h4>Crea tu primera lista</h4>
+                    <h4>Es muy facil,y te echaremos una mano</h4>
+                    <button class="btn-success">Crear lista</button>
+
+                </ul>
+            </div>
+
+            <!-- Contenido principal -->
+            <div class="col-md-10 p-4">
+                <!-- Barra de búsqueda -->
+                <div class="search-bar mb-4">
+                    <input type="text" id="searchInput" placeholder="Buscar canciones, álbumes o artistas...">
+                </div>
+
+                <!-- Playlist -->
+                <div class="playlist-container">
+                    <h3>Tu Playlist</h3>
+                    <ul id="playlist" class="list-group"></ul>
+                </div>
+
+                <!-- Canciones Populares -->
+                <h2 class="mt-4">Canciones Populares</h2>
+                <div class="row">
+                    <!-- Camilo -->
+                    <div class="col-md-2 search-item" data-name="Vida de Rico">
+                        <div class="card bg-dark text-white">
+                            <img src="musica/OIP.jpeg" alt="Vida de Rico">
+                            <div class="card-body">
+                                <p class="card-text">Vida de Rico - Camilo</p>
+                                <button class="btn-play" onclick="reproducirCancion('vida de rico Camilo .mp3')">▶ Play</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- recientes  -->
+                    <div class="col-md-2 search-item" data-name="mix de los 200">
+                        <div class="card bg-dark text-white">
+                            <img src="musica/OIP (1).jpeg" alt="mix de los 200">
+                            <div class="card-body">
+                                <p class="card-text">mix de los 200</p>
+                                <button class="btn-play" onclick="reproducirCancion('mix de los 200.mp3')">▶ Play</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Más Canciones -->
+                <h2 class="mt-4">Top 50</h2>
+                <div class="row">
+                    <div class="col-md-2 search-item" data-name="Blinding Lights">
+                        <div class="card bg-dark text-white">
+                            <img src="musica/OIP (2).jpeg" alt="Blinding Lights">
+                            <div class="card-body">
+                                <p class="card-text">Blinding Lights - The Weeknd</p>
+                                <button class="btn-play" onclick="reproducirCancion('Blinding Lights.mp3')">▶ Play</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Aquí puedes seguir agregando más canciones -->
+                    <h2 class="mt-4">Album y sencillos </h2>
+                    <div class="row">
+                        <div class="col-md-2 search-item" data-name="jesse y joy , reik ,Juanes">
+                            <div class="card bg-dark text-white">
+                                <img src="musica/OIP (3).jpeg" alt="jesse y joy , reik ,Juanes">
+                                <div class="card-body">
+                                    <p class="card-text">jesse y joy , reik ,Juanes</p>
+                                    <button class="btn-play" onclick="reproducirCancion('jesse y joy,Juanes.mp3')">▶ Play</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    <h2 class="mt-4">Descubre Nuevas Canciones</h2>
+                    <div class="row">
+                        <div class="col-md-2 search-item" data-name="shakira">
+                            <div class="card bg-dark text-white">
+                                <img src="musica/OIP (4).jpeg" alt="Clandestino">
+                                <div class="card-body">
+                                    <p class="card-text">Clandestino - shakira</p>
+                                    <button class="btn-play" onclick="reproducirCancion('Clandestino.mp3')">▶ Play</button>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                      <!-- musica mix-->
+                      <div class="col-md-2">
+                        <div class="card bg-dark text-white">
+                            <img src="musica/OIP (7).jpeg" alt="Mix Variado">
+                            <div class="card-body">
+                                <p class="card-text">Wisin, Ariana Grande, CNCO - Mix</p>
+                                <button class="btn-play" onclick="reproducirCancion('mix_variado.mp3')">▶ Play</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                      <!-- Favoritos -->
+                <h2 class="mt-4">Favoritos</h2>
+                <div class="row">
+                    <!-- Camilo -->
+                    <div class="col-md-2 search-item" data-name="debi tirar mas fotos ">
+                        <div class="card bg-dark text-white">
+                            <img src="musica/OIP (5).jpeg" alt="debi tirar mas fotos">
+                            <div class="card-body">
+                                <p class="card-text">Vida de Rico - Camilo</p>
+                                <button class="btn-play" onclick="reproducirCancion('Camilo.mp3')">▶ Play</button>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- vuelve a tu musica -->
+                <h2 class="mt-4">vuelve a tu musica</h2>
+                <div class="row">
+                    <!-- Camilo -->
+                    <div class="col-md-2 search-item" data-name="solo pop, mix bachata , mix romantica . ">
+                        <div class="card bg-dark text-white">
+                            <img src="musica/OIP (6).jpeg" alt="solo pop, mix bachata , mix romantica">
+                            <div class="card-body">
+                                <p class="card-text">solo pop, mix bachata , mix romantica</p>
+                                <button class="btn-play" onclick="reproducirCancion('solo pop, mix romantica .mp3')">▶ Play</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Reproductor -->
+        <div class="reproductor">
+            <p id="cancionActual">Reproduciendo: Ninguna</p>
+            <audio id="audioPlayer" controls>
+                <source src="" type="audio/mp3">
+            </audio>
+        </div>
+    </div>
+
+   <script> src="js/js"</script> 
+            
+           </body>
+           </html>
